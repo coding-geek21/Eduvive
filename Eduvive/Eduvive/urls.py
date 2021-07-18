@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django import urls
+from django.urls.conf import include
 
 urlpatterns = [
+    path('',include('EduviveData.urls')),
+    path('authentication/',include('authentication.urls')),
     path('admin/', admin.site.urls),
 ]
