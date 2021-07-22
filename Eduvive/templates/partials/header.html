@@ -117,9 +117,12 @@
       #login-navbtn{
         border:2px solid #F05D87;
         color:#FAFAFA;
-        padding:4% 8%;
+        padding:2% 4%;
         border-radius:8px;
-        font-size:1.4rem;
+        font-size:1rem;
+      }
+      #sign-up{
+        margin-right:0px;
       }
     }
 
@@ -166,40 +169,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Blog</a>
+                    <a class="nav-link" href="{% url 'EduviveData' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Events</a>
+                    <a class="nav-link" href="">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Discussions</a>
+                    <a class="nav-link" href="">Contact Us</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdownMenuLink"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        More
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="">Coding Playground</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Internships & Jobs</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Courses & Certifications</a>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">FAQs</a>
                 </li>
             </ul>
-            <a class="nav-link" id="sign-up" href="">Sign up</a>
         </div>
+        {% if user.is_authenticated %}
+        <a
+            class="btn"
+            id="login-navbtn"
+            type="submit"
+            href="{% url 'logout' %}"
+        >Logout</a>
+        <button
+            class="navbar-toggler  navbar-light"
+            style="background-color:white;"
+            type="button"
+            onclick="openNav()"
+        >
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        {% else %}
+        <a class="nav-link" id="sign-up" href="{% url 'register' %}">Sign up</a>
         <a
             class="btn"
             id="login-navbtn"
@@ -214,28 +216,36 @@
         >
             <span class="navbar-toggler-icon "></span>
         </button>
+        {% endif %}
     </div>
 </nav>
 <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
         <div class="overlay-top">
-            <a href="#">Home</a>
-            <a href="">Blog</a>
-            <a href="">Events</a>
-            <a href="">Discussions</a>
-            <a href="">Coding Playground</a>
-            <a href="">Internships & Jobs</a>
-            <a href="">Courses & Certifications</a>
+            <a href="{% url 'EduviveData' %}">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Feedback</a>
+            <a href="#">FAQs</a>
         </div>
         <div class="overlay-end">
-            <a style="text-align: center;margin-left:0%;" href="">Sign up</a>
+            {% if user.is_authenticated %}
+            <a
+                class="btn"
+                id="login-navbtn2"
+                type="submit"
+                href="{% url 'logout' %}"
+            >Logout</a>
+            {% else %}
+            <a style="text-align: center;margin-left:0%;" href="{% url 'register' %}">Sign up</a>
             <a
                 class="btn"
                 id="login-navbtn2"
                 type="submit"
                 href="{% url 'login' %}"
             >Login</a>
+            {% endif %}
         </div>
         <div class="row">
             <p class="copyrights2">

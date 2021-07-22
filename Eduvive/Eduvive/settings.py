@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+from django.contrib import messages
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -116,6 +116,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -123,3 +127,14 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'Eduvive/static')]
 STATIC_ROOTS = os.path.join(BASE_DIR,'static')
+
+
+#email stuff
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'maniachuthan64@gmail.com'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'maniachuthan64@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'mani@221958'
+

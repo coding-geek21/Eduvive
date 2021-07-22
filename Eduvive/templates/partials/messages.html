@@ -1,0 +1,59 @@
+<style>
+    .alert{
+        width:535px;
+        height: auto;
+        font-size:18px;
+        border-radius: 8px;
+        color:white;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .messages{
+        margin-bottom:50px;
+        margin-top:30px
+    }
+    .alert-success{
+        background-color: #0F5257;
+    }
+    .alert-info{
+        background-color: #49BEAA;
+        color: #000;
+    }
+    .alert-danger{
+        background-color: #B10F2E;
+    }
+    .alert-warning{
+        background-color: #FFB100;
+        color: #000;
+    }
+
+    @media screen and (max-device-width: 375px) {
+        
+        .alert{
+            width:80%;
+            height: 39px;
+            font-size: 13px;
+        }
+    }
+
+
+    @media screen and (max-device-width: 1000px) {
+        .alert{
+            width:80%;
+            height: auto;
+        }
+    
+    }
+</style>
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} data-auto-dismiss="2000" class="alert alert-dismissible fade show alert-{{ message.tags }}" role="alert" {% endif %}>
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

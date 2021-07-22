@@ -57,7 +57,9 @@
         font-weight: 600;
         color:#564145;
     }
-
+    .img-fixed{
+        width: 100%;
+    }
     .read-more{
         border: none;
         outline: none;
@@ -76,6 +78,40 @@
     .about{
         margin-top:10%;
     }
+    .card{
+        background-color:#E6C4FF;
+        margin-bottom:20%;
+        padding:5%;
+    }
+    .card-heading{
+        font-family: 'Poppins',sans-serif;
+        font-size: 24px;
+        text-align: center;
+        color:#AD578F;
+    }
+    .card-text{
+        font-family: 'Nunito',sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color:#564145; 
+        text-align: center;
+    }
+    .card-btn{
+        text-decoration: none;
+        border-radius:4px;
+        background-color: #0A014F;
+        padding:10px;
+        color:white;
+        width:30%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+}
+@media screen and (max-device-width: 450px){
+    h1{
+        font-size:60px;
+    }      
+}
 </style>
 <div class="header-top">
     <div class="overlay-header">
@@ -95,14 +131,53 @@
                 <p class="main-text" style="margin-top: 10%;">Eduvive is all about sharing knowledge, Exploring and learning things, Have you ever wondered where to start? and Where to look for opportunities? That's why We came up with Eduvive. Eduvive provides students, working professionals with opportunities to connect with networks, share thier ideas, find jobs and internships and participate in many Events</p>
             </div>
             <div class="col-lg-6 col-12 col-sm-12 col-md-6">
-                <img src="{% static 'images/about-us.png' %}">
+                <img class="img-fixed" src="{% static 'images/about-us.png' %}">
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-12 col-sm-12 col-md-3"></div>
-            <div class="col-lg-3 col-12 col-sm-12 col-md-3"></div>
-            <div class="col-lg-3 col-12 col-sm-12 col-md-3"></div>
-            <div class="col-lg-3 col-12 col-sm-12 col-md-3"></div>
+            <p class="main-heading" style="text-align: center;margin-bottom: 10%;">Benefits if you join us!</p>
+            <div class="col-lg-4 col-12 col-sm-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/blog.png'%}" class="img-card">
+                    <p class="card-heading">Blog</p>
+                    <p class="card-text">Write your own blogs and share with others! Show this world your writing skills...</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 col-sm-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/events.png'%}" class="img-card">
+                    <p class="card-heading">Events</p>
+                    <p class="card-text">Look for workshops, Hackathons and coding contests conducted all around the world!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 col-sm-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/discussions.png'%}" class="img-card">
+                    <p class="card-heading">Discussions</p>
+                    <p class="card-text">Struck somewhere? No worries! Ask your peers and have some discussions on all topics..</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 col-sm-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/coding.png'%}" class="img-card">
+                    <p class="card-heading">Coding Playground</p>
+                    <p class="card-text">Practise coding and enhance your coding skills!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 col-sm-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/course.png'%}" class="img-card">
+                    <p class="card-heading">Courses & Certifications</p>
+                    <p class="card-text">Learn on demand skills through various courses and earn a recognized certifications! Exlore free courses and start learning..</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 col-sm-12 col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/jobs.png'%}" class="img-card">
+                    <p class="card-heading">Internships & Jobs</p>
+                    <p class="card-text">Tired of searching for jobs & Internships? Here is a way look for all kinds of jobs and internships at your ease!</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="developer"></div>
