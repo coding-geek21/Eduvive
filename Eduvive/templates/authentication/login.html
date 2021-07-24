@@ -125,18 +125,18 @@ body{
     .heading{
       font-size: 24px;
     }
-    .container{
-      margin-left:5%;
-      margin-right: 5%;
-      margin-top:10%;
-      margin-bottom:20%;
-      width:90%;
-    }
+    
 }
 
 @media screen and (max-device-width:766px) {
     .login-part1{
-      border-radius:16px 16px 0px 0px;
+      border-radius:0px 0px 0px 0px;
+    }
+    .login-card{
+      border:0px solid #8568BC;
+      border-radius: 0px;
+      margin:0% 0%;
+      box-shadow: 0 0 0px 0px #596477;
     }
 }
 @media screen and (max-device-width: 1000px) {
@@ -169,43 +169,42 @@ body{
                 <img class="login-img" src="{% static 'images/login.png' %}">
                 <p class="text" style="display:inline-block;text-align: left;margin-left: 2%;">Need an Account?</p>
                 <a class="register-here" href="{% url 'register' %}">Sign Up</a>
-            </span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12 col-md-6 col-sm-12">
+            <div class="login-container col-lg-12">
+                <form style="margin-top:80px;" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username" class="label">Username</label>
+                        <input
+                            type="text"
+                            class="form-control input-field"
+                            name="username"
+                            id="username"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="label">Password</label>
+                        <input
+                            type="password"
+                            class="form-control input-field"
+                            name="password"
+                            style=" margin-bottom:15px;"
+                            id="password"
+                        >
+                        <small class="form-text">
+                            <a id="btn-text" href="">Forgot Password?</a>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-login">Login</button>
+                        <br>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="col-lg-6 col-12 col-md-6 col-sm-12">
-        <div class="login-container col-lg-12">
-            <form style="margin-top:80px;" action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="username" class="label">Username</label>
-                    <input
-                        type="text"
-                        class="form-control input-field"
-                        name="username"
-                        id="username"
-                    >
-                </div>
-                <div class="form-group">
-                    <label for="password" class="label">Password</label>
-                    <input
-                        type="password"
-                        class="form-control input-field"
-                        name="password"
-                        style=" margin-bottom:15px;"
-                        id="password"
-                    >
-                    <small class="form-text">
-                        <a id="btn-text" href="">Forgot Password?</a>
-                    </small>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-login">Login</button>
-                    <br>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 </div>
 {% include 'partials/footer.html' %}
 

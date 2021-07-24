@@ -21,5 +21,6 @@ from django.urls.conf import include
 urlpatterns = [
     path('',include('EduviveData.urls')),
     path('authentication/',include('authentication.urls')),
+    path('appdashboard/',include('appdashboard.urls')),
     path('admin/', admin.site.urls),
 ]
