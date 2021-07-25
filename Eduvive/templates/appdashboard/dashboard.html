@@ -8,12 +8,19 @@
      body{
         background-color: #FAE8EB;
     }
+    .dashboard-top{
+        text-align: center;
+        background-color:white;
+    }
+    .fixed-img{
+        width:70%;
+    }
     *{padding: 0; margin: 0; box-sizing: border-box;}
 </style>
-<div class="">
-    <h1>Hello World</h1>
-    <p>Hey this is dashboard</p>
+<div class="dashboard-top">
+    <img class="fixed-img" src="{% static 'images/welcome.jpg' %}">
 </div>
+<div class="card-items"></div>
 {% include 'partials/footer.html' %}
 
 {% endblock content %}
