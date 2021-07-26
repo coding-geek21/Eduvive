@@ -3,6 +3,7 @@
     #header{
       background-color: #0A014F;
       font-family: 'Nunito', sans-serif;
+      padding:1%;
     }
     .dropdown-item:focus{
       background-color:#C9B8E9;
@@ -39,10 +40,23 @@
     #sign-up{
       margin-right:35px;
     }
+    .btn-profile{
+      background-color:  #F05D87;
+      color:#FAE8EB;
+      padding: 12px 35px 12px 35px;
+      border-radius:8px;
+      font-size:18px;
+      font-family: 'Nunito', sans-serif;
+    }
+    .btn-arrow{
+      background-color:  #F05D87;
+      color:#FAE8EB;
+      border-radius:8px;
+    }
     #login-navbtn{
       border:2px solid #F05D87;
       color:#FAE8EB;
-      padding: 16px 45px 16px 45px;
+      padding: 12px 35px 12px 35px;
       border-radius:8px;
       font-size:18px;
       font-family: 'Nunito', sans-serif;
@@ -186,6 +200,25 @@
             </ul>
         </div>
         {% if user.is_authenticated %}
+        <div class="btn-group" id="sign-up">
+            <button type="button" class="btn btn-profile" onClick="window.location.href='{% url 'dashboard' %}';">{{user}}</button>
+            <button
+                type="button"
+                class="btn btn-arrow dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+            >
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="#">My Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Settings</a>
+                </li>
+            </ul>
+        </div>
         <a
             class="btn"
             id="login-navbtn"

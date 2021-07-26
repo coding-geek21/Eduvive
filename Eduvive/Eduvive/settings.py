@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'EduviveData',
+    'froala_editor',
     'appdashboard',
     'whitenoise.runserver_nostatic',
     'authentication',
@@ -133,6 +134,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'Eduvive/static'),
 )
 
+MEDIA_URL = '/staticfiles/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/media/') 
+
 #email stuff
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -140,7 +144,7 @@ EMAIL_HOST_USER = 'maniachuthan64@gmail.com'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'maniachuthan64@gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'mani@221958'
+EMAIL_HOST_PASSWORD = 'wmjz gpph jzhs nyvk'
 
 
 #Add configuration for static files storage using whitenoise
@@ -148,3 +152,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'colors', 'draggable', 'emoticons',
+        'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
+        'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
+        'url', 'video')

@@ -1,0 +1,633 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'partials/header.html' %}
+<style>
+     body{
+        background-color: #FAE8EB;
+    }
+    html{
+        font-size:10px;
+    }
+    *,
+    *::before,
+    *::after{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .body{
+        margin:8%;
+    }
+    .carousel{
+        margin-top:5%;
+        margin-bottom: 5%;
+    }
+    .carousel-cards{
+        background-color: #C9B8E9;
+        border-radius: 16px;
+        color:hsla(250, 31%, 16%, 1);
+    }
+    .carousel-img{
+        margin:5%;
+        width:80%;
+    }
+    .carousel-heading{
+        font-family: 'Poppins', sans-serif;
+        font-size:36px;
+        text-decoration: none;
+        color:hsla(250, 31%, 16%, 1);
+    }
+    
+    .blog-text{
+        margin-left:0%;
+        margin-top:2%;
+        margin-bottom:2%;
+        width:85%;
+    }
+    .posts-body{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FAE8EB;
+        padding: 0 1.5rem;
+        margin-bottom:5%;
+    } 
+    .carousel-text{
+        font-family: 'Nunito',sans-serif ;
+        font-weight: 600;
+        font-size: 1.8rem;
+        word-wrap: break-word;
+        color:#652C57;
+    }
+    .carousel-text-top{
+        font-family: 'Nunito',sans-serif ;
+        font-weight: 600;
+        font-size:1.8rem ;
+        line-height:1.8em;
+        color:#652C57;
+    }
+    .section-heading{
+        font-family: 'Poppins', sans-serif;
+        color:#8568BC;
+        font-size:36px;
+        margin-bottom:4%;
+    }
+
+    .section-text{
+        font-family: 'Nunito', sans-serif;
+        color:white;
+        font-size:18px;
+    }
+    
+    .posts{
+        margin-top:10%;
+        margin-bottom:10%;
+    }
+   
+    .img-fixed{
+        width: 100%;
+    }
+
+    .posts-body{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1.5rem;
+        margin-bottom:5%;
+    } 
+    .blog-post{
+        width: 100%;
+        max-width: 98rem;
+        color:hsla(250, 31%, 16%, 1);
+        padding: 1.2rem;
+        font-family: 'Nunito',sans-serif ;
+        background-color: #C9B8E9;
+        box-shadow: 0 1.4rem 8rem #db606033;
+        display: flex;
+        align-items: center;
+        border-radius: 0.8rem;
+    }
+    .blog-post_img{
+        min-width: 25rem;
+        max-width: 25rem;
+        height: 25rem;
+        transform: translateX(-8rem);
+        position: relative;
+    }
+    .blog-post_img img{
+        width: 100%;
+        height:100% ;
+        object-fit: cover;
+        display: block;
+        border-radius: .8rem;
+    }
+    .blog-post_img::before{
+        width: 100%;
+        height:100% ;
+        position: relative;
+        top: 0;
+        left: 0;   
+    }
+    
+    .blog-post_date{
+        margin-left: -7%;
+    }
+
+    .blog-post_info{
+        margin-left:-10%;
+        width:90%;
+    }
+
+    .post-details{
+        display: inline-block;
+        font-size:1.8rem;
+        margin:2%;
+        color:hsla(250, 31%, 16%, 1);
+        font-family: 'Nunito',sans-serif ;
+    }
+
+    .post-icons{
+        width: 22px;    
+        margin-right:3px;
+        height: 22px;
+    }
+
+    #popular-posts{
+        margin-top: 10%;
+    }
+
+    .blog-post_title{
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.6rem;
+        margin: 2rem 0 2rem;
+        color:hsla(250, 31%, 16%, 1);
+        text-decoration: none;
+    }
+
+    .editors-pick1{
+        padding:8%;
+        font-family: 'Poppins', sans-serif;
+        background-color: #C9B8E9;
+        margin-bottom:10%;
+        height: auto;
+        color:hsla(250, 31%, 16%, 1);
+    }
+
+    .editors-pick2{        
+        background-color: #C9B8E9;
+        padding:2%;
+        height: auto;
+        text-align: left;
+        margin-bottom:10%;
+        color:hsla(250, 31%, 16%, 1);
+    }
+
+    
+    .search-btn{
+      border:1px solid #8568BC;
+      color:#FAFAFA;
+      background-color:#8568BC;
+      border-radius:8px;
+      padding:2%;
+      font-size: 18px;
+      width:25%;
+      border-radius: 0px 12px 12px 0px;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .search-input{
+        width:50%;
+        padding:2%;
+        font-size: 18px;
+        background-color:  #FAE8EB;
+        border-radius:12px 0px 0px 12px;
+        border:1px solid #8568BC;
+    }
+
+    .blog-post_text{
+        margin-bottom: 3rem;
+        font-size:1.8rem;
+        word-wrap: break-word;
+        width: 80%;
+        color:#652C57;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 600;
+    }
+    .posts-body{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FAE8EB;
+        padding: 0 1.5rem;
+        margin-bottom:5%;
+    } 
+
+    .blog-post_cta{
+        display: inline-block;
+        padding: 1.5rem 3rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        color: #eee;
+        background-color:#8568BC;
+        border-radius: .9rem;
+        text-decoration: none;
+    }
+    .blog-post_cta:hover{
+        color: white;
+    }
+    @media screen and (max-width:1068px) {
+        .blog-post{
+            max-width: 80rem;
+            padding-bottom: 5%;
+        }
+        .blog-post_img{
+            min-width: 30rem;
+            max-width: 30rem;
+        }
+    }
+
+    @media screen and (max-width:575px) {
+        .editors-pick2{
+            text-align: center;
+        }
+        .blog-post_cta{
+            padding: 0.8rem 1rem;
+        }
+    }
+
+    @media screen and (max-width:375px) {
+        .section-heading{
+            font-size:24px;
+            margin-bottom: 10%;
+        }
+        .posts-btn{
+            font-size:13px;
+        }
+        .carousel-heading{
+            font-size: 24px;
+        }
+    }
+
+    @media screen and (max-width:968px) {
+
+        .blog-post{
+            padding: 2.5rem;
+            flex-direction: column;
+            margin-top:10%;
+            margin-bottom:10%;
+        }
+        .blog-post_img{
+            min-width: 100%;
+            max-width: 100%;
+            transform: translate(0, -8rem);
+        }
+
+        .blog-text{
+            margin-left:2%;
+            text-align: center;
+        }
+
+        .carousel-img,.blog-text{
+            width: 90%;
+        }
+
+        .blog-post_info{
+            margin-left:0%;
+            margin-top:-10%;
+        }
+
+        .body{
+            margin:4%;
+        }
+    }
+    .popular-post{
+        margin: 3%;
+        position: relative;
+    }
+
+    .second-txt {
+        position: absolute;
+        top: 5%;
+        left:10%;
+        color:#8568BC;
+        font-family: Nunito;
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 49px;
+    }
+    .first-txt {
+        position: absolute;
+        top: 5%;
+        left:10%;
+        color:#8568BC;
+        font-family: Nunito;
+        font-weight: 600;
+        font-size: 2rem;
+    }
+
+    .pop-details{
+        position: absolute;
+        bottom: 10%;
+        left:5%;        
+    }
+    .post-details2{
+        font-family: Nunito;
+        font-weight: 600;
+        color: #8568BC;
+        display: inline-block;
+        font-size:1.6rem;
+        margin:1.2%;
+    }
+
+    .editor2-img{
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+    }
+
+    .posts-btn{
+      background-color:  #8568BC;
+      color:#FAE8EB;
+      padding: 12px 35px 12px 35px;
+      border-radius:8px;
+      font-size:18px;
+      margin-bottom: 5%;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .posts-btn:hover{
+      background-color:#8568BC;
+      color:#FAFAFA;
+    }
+
+    .header{
+        margin:5%;
+    }
+ 
+    .side-line{
+        width: 80px;
+        position: relative;
+        border-top: 5px solid #8568BC;
+    }
+
+    .search-container{
+        margin-bottom: 5%;
+    }
+</style>
+<div class="body">
+    <div class="header">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-4 col-12">
+                <div class="search-container" style="text-align: center;">
+                    <div class="row">
+                        <input
+                            type="text"
+                            placeholder="Search.."
+                            class="search-input"
+                            name="search"
+                        >
+                        <button class="search-btn" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="col-lg-3 col-md-4 col-sm-4 col-12">
+                <a class="btn posts-btn" type="submit" href="{% url 'add_blogs' %}">Add Posts</a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4 col-12">
+                <a class="btn posts-btn" type="submit" href="#">Manage Posts</a>
+            </div>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+    <!---Carousel starts-->
+    <div class="side-line"></div>
+    <p class="section-heading">Trending</p>
+    <div class="trending">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for blog in trending_first %}
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <div class="carousel-cards d-block w-100">
+                        <div class="row">
+                            <div class="col-lg-6 col-12 col-md-6">
+                                <a href="{% url 'blog_content' blog.slug %}">
+                                    <img class="carousel-img" src="{{blog.image.url}}">
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-12 col-md-6">
+                                <div class="blog-text">
+                                    <p class="carousel-text-top">{{blog.created_date_time}}</p>
+                                    <a href="{% url 'blog_content' blog.slug %}" class="carousel-heading">
+                                        <p>{{blog.title}}</p>
+                                    </a>
+                                    <p class="carousel-text">{{blog.content|slice:":150"|safe}}</p>
+                                </div>
+                                <div class="blog-post_date">
+                                    <ul>
+                                        <li class="post-details">
+                                            <img class="post-icons" src="{% static 'images/profile -blog.svg' %}">
+                                            {{blog.user}}
+                                        </li>
+                                        <li class="post-details">
+                                            <img class="post-icons" src="{% static 'images/comment-blog.svg' %}">
+                                            8 comments
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for blog in trending %}
+                <div class="carousel-item" data-bs-interval="2000">
+                    <div class="carousel-cards d-block w-100">
+                        <div class="row">
+                            <div class="col-lg-6 col-12 col-md-6">
+                                <a href="{% url 'blog_content' blog.slug %}">
+                                    <img class="carousel-img" src="{{blog.image.url}}">
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-12 col-md-6">
+                                <div class="blog-text">
+                                    <p class="carousel-text-top">{{blog.created_date_time}}</p>
+                                    <a href="{% url 'blog_content' blog.slug %}" class="carousel-heading">
+                                        <p>{{blog.title}}</p>
+                                    </a>
+                                    <p class="carousel-text">{{blog.content|slice:":150"|safe}}</p>
+                                </div>
+                                <div class="blog-post_date">
+                                    <ul>
+                                        <li class="post-details">
+                                            <img class="post-icons" src="{% static 'images/profile -blog.svg' %}">
+                                            {{blog.user}}
+                                        </li>
+                                        <li class="post-details">
+                                            <img class="post-icons" src="{% static 'images/comment-blog.svg' %}">
+                                            8 comments
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!---Blog posts starts-->
+    <div class="posts">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-12">
+                <div class="side-line"></div>
+                <p class="section-heading">Latest Posts</p>
+                {% for blog in latest %}
+                <div class="posts-body">
+                    <div class="blog-post">
+                        <div class="blog-post_img">
+                            <img src="{{blog.image.url}}">
+                        </div>
+                        <div class="blog-post_info">
+                            <h1 class="blog-post_title">{{blog.title}}</h1>
+                            <div class="blog-post_date">
+                                <ul>
+                                    <li class="post-details">
+                                        <img class="post-icons" src="{% static 'images/profile -blog.svg' %}">
+                                        {{blog.user}}
+                                    </li>
+                                    <li class="post-details">
+                                        <img class="post-icons" src="{% static 'images/calendar-blog.svg' %}">
+                                        {{blog.created_date_time}}
+                                    </li>
+                                    <li class="post-details">
+                                        <img class="post-icons" src="{% static 'images/comment-blog.svg' %}">
+                                        8 comments
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="blog-post_text">
+                                {{blog.content|slice:":150"|safe}}
+                            </p>
+                            <a href="{% url 'blog_content' blog.slug %}" class="blog-post_cta">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+                <div class="side-line"></div>
+                <p class="section-heading">Editor's Pick</p>
+                {% for blog in editor1 %}
+                <div class="editors-pick1">
+                    <a href="{% url 'blog_content' blog.slug %}">
+                        <img class="editor2-img" src="{{blog.image.url}}">
+                    </a>
+                    <a href="{% url 'blog_content' blog.slug %}" class="blog-post_title">
+                        <h1>{{blog.title}}</h1>
+                    </a>
+                    <p class="blog-post_text">
+                        {{blog.content|slice:":150"|safe}}
+                    </p>
+                    <div class="blog-post_date">
+                        <ul>
+                            <li class="post-details">
+                                <img class="post-icons" src="{% static 'images/profile -blog.svg' %}">
+                                {{blog.user}}
+                            </li>
+                            <li class="post-details">
+                                <img class="post-icons" src="{% static 'images/calendar-blog.svg' %}">
+                                {{blog.created_date_time}}
+                            </li>
+                            <li class="post-details">
+                                <img class="post-icons" src="{% static 'images/comment-blog.svg' %}">
+                                8 comments
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor%}
+                {% for blog in editor2 %}
+                <div class="editors-pick2">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-4 col-12 ">
+                            <a href="{% url 'blog_content' blog.slug %}">
+                                <img class="editor2-img" src="{{blog.image.url}}">
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-8 col-12">
+                            <a href="{% url 'blog_content' blog.slug %}" class="blog-post_title">
+                                <h1>{{blog.title}}</h1>
+                            </a>
+                            <div class="blog-post_date">
+                                <ul>
+                                    <li class="post-details">
+                                        <img class="post-icons" src="{% static 'images/profile -blog.svg' %}">
+                                        {{blog.user}}
+                                    </li>
+                                    <li class="post-details">
+                                        <img class="post-icons" src="{% static 'images/calendar-blog.svg' %}">
+                                        {{blog.created_date_time}}
+                                    </li>
+                                    <li class="post-details">
+                                        <img class="post-icons" src="{% static 'images/comment-blog.svg' %}">
+                                        8 comments
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row" id="popular-posts">
+            <div class="side-line"></div>
+            <p class="section-heading">Popular Posts</p>
+            <div class="row">
+                {% for blog in popular %}
+                <div class="col-lg-5 col-md-6 col-sm-12 col-12">
+                    <div class="popular-post">
+                        <img class="img-fixed" src="{{blog.image.url}}">
+                        <p class="second-txt">{{blog.title}}</p>
+                        <div class="pop-details">
+                            <ul>
+                                <li class="post-details2">
+                                    <img class="post-icons" src="{% static 'images/pop-profile.svg' %}">
+                                    {{blog.user}}
+                                </li>
+                                <li class="post-details2">
+                                    <img class="post-icons" src="{% static 'images/pop-calendar.svg' %}">
+                                    {{blog.created_date_time}}
+                                </li>
+                                <li class="post-details2">
+                                    <img class="post-icons" src="{% static 'images/pop-comment.svg' %}">
+                                    8 comments
+                                </li>
+                            </ul>
+                            <a href="{% url 'blog_content' blog.slug %}" class="blog-post_cta">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'partials/footer.html' %}
+
+{% endblock content %}

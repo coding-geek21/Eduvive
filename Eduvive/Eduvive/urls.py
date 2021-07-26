@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django import urls
 from django.urls.conf import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('',include('EduviveData.urls')),
     path('authentication/',include('authentication.urls')),
     path('appdashboard/',include('appdashboard.urls')),
     path('admin/', admin.site.urls),
+    path('froala_editor/', include('froala_editor.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
