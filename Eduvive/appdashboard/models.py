@@ -21,6 +21,7 @@ class BlogModel(models.Model):
         'entities', 'file', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
         'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
         'url', 'video'))
+    # content = models.TextField()
     tag=models.CharField(max_length=100,choices=TAG_CHOICES,default="latest")
     user=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
     slug=models.SlugField(max_length=1000,null=True,blank=True)

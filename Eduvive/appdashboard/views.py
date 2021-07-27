@@ -21,7 +21,7 @@ def blogs(request):
     'editor1':BlogModel.objects.all().filter(tag='editor1'),
     'editor2':BlogModel.objects.all().filter(tag='editor2'),
     'popular':BlogModel.objects.all().filter(tag='popular')}
-    return render(request , 'appdashboard/blogs.html' , context)
+    return render(request , 'appdashboard/blogs.html',context)
 
 
 class AddBlogView(View):
@@ -36,6 +36,7 @@ class AddBlogView(View):
         title = request.POST['title']
         tag=request.POST['tag']            
         user = request.user
+        # content=request.POST['content']
 
         
         try:  

@@ -104,7 +104,7 @@ class LoginView(View):
                     auth.login(request, user)
                     messages.success(request, 'Welcome, ' + 
                                     user.username + ' you are now logged in')
-                    return redirect('EduviveData')
+                    return redirect('dashboard')
 
                 messages.error(
                     request, 'Account is not active, please check your email')

@@ -17,6 +17,8 @@
     }
     .img-card{
         width:100%;
+        position: relative;
+
     }
     .container{
         margin-bottom: 20%;
@@ -37,6 +39,20 @@
         font-weight: 600;
         color:#564145;
     }
+    .blog-post_cta{
+        position: absolute;
+        bottom: 10%;
+        left:5%; 
+        display: inline-block;
+        padding: 2%;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size:18px;
+        color: #eee;
+        background-color:#8568BC;
+        border-radius: .9rem;
+        text-decoration: none;
+    }
 </style>
 <div class="dashboard-top">
     <img class="fixed-img" src="{% static 'images/welcome.jpg' %}">
@@ -50,6 +66,7 @@
                     <a href="{% url 'blogs' %}">
                         <img src="{% static 'images/blog-img.jpg'%}" class="img-card">
                     </a>
+                    <a href="{% url 'blogs' %}" class="blog-post_cta">view</a>
                 </div>
             </div>
         </div>
