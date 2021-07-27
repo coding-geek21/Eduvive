@@ -7,3 +7,4 @@ pytz==2017.3
 six
 pillow
 django-froala-editor
+django-cloudinary-storage

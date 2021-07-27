@@ -17,10 +17,7 @@ TAG_CHOICES = (
 
 class BlogModel(models.Model):
     title=models.CharField(max_length=1000)
-    content = FroalaField(plugins=('align', 'char_counter', 'code_beautifier' ,'code_view','draggable', 'emoticons',
-        'entities', 'file', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
-        'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
-        'url', 'video'))
+    content = FroalaField()
     # content = models.TextField()
     tag=models.CharField(max_length=100,choices=TAG_CHOICES,default="latest")
     user=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
@@ -31,3 +28,8 @@ class BlogModel(models.Model):
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.title)
         super(BlogModel, self).save(*args, **kwargs)
+
+# plugins=('align', 'char_counter', 'code_beautifier' ,'code_view','draggable', 'emoticons',
+#         'entities', 'file', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
+#         'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
+#         'url', 'video')

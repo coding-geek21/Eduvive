@@ -6,14 +6,17 @@ from django.contrib import messages
 from django.views import View
 from .form import BlogForm
 from django import forms
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
-
+@login_required(login_url='login') 
 def dashboard(request):
     return render(request,'appdashboard/dashboard.html')
 
 
+@login_required(login_url='login') 
 def blogs(request):
     context = {'trending_first':BlogModel.objects.all().filter(tag='trending_first'),
     'trending' : BlogModel.objects.all().filter(tag='trending'),
@@ -58,6 +61,7 @@ class AddBlogView(View):
         return render(request , 'appdashboard/add_blogs.html',context)
 
 
+@login_required(login_url='login') 
 def blog_content(request,slug):
     context = {}
     try:

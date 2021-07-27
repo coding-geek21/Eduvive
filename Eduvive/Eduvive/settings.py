@@ -25,7 +25,6 @@ SECRET_KEY = '@p+n6n%3k$v)6lk8f2bnugovuez62=&+lwq-!&mjo)a!+8%#s*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['eduvive-app.herokuapp.com']
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -39,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'EduviveData',
     'froala_editor',
+    'cloudinary',
+    'cloudinary_storage',
     'appdashboard',
     'whitenoise.runserver_nostatic',
     'authentication',
@@ -148,8 +149,11 @@ EMAIL_HOST_PASSWORD = 'wmjz gpph jzhs nyvk'
 
 
 #Add configuration for static files storage using whitenoise
+WHITENOISE_USE_FINDERS = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
@@ -159,3 +163,9 @@ FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view'
         'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
         'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
         'url', 'video')
+
+CLOUDINARY_STORAGE ={
+    'CLOUD_NAME': 'defmhlaju',
+    'API_KEY': '836163491581617',
+    'API_SECRET': 'eid0AVwRnP95CHVyRuAhVQ9Z0FY'
+}
