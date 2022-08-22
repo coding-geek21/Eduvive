@@ -21,9 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('',include('EduviveData.urls')),
+    path('',include('appdashboard.urls')),
     path('authentication/',include('authentication.urls')),
-    path('appdashboard/',include('appdashboard.urls')),
     path('admin/', admin.site.urls),
     path('froala_editor/', include('froala_editor.urls')),
 ]

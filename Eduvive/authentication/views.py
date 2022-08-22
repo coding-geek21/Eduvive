@@ -163,7 +163,7 @@ class ChangePasswordView(TemplateView):
                 user.set_password(password_1)
                 user.save()
                 auth.login(request, user)
-                return redirect('EduviveData')
+                return redirect('home')
 
 class Forget_PasswordView(View):
     def get(self,request):
@@ -245,4 +245,4 @@ class Reset_Newpassword_form(View):
             user.save()
             auth.login(request, user)
             messages.success(request,'Your Password Reset Successfully Completed! Login using New Password!')
-            return redirect('EduviveData')
+            return redirect('home')

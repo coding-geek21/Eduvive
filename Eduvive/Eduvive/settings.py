@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'EduviveData',
     'froala_editor',
     'cloudinary',
     'cloudinary_storage',
@@ -145,7 +144,7 @@ EMAIL_HOST_USER = 'maniachuthan64@gmail.com'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'maniachuthan64@gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'wmjz gpph jzhs nyvk'
+EMAIL_HOST_PASSWORD = 'ouoe zmiq syff vahj'
 
 
 #Add configuration for static files storage using whitenoise

@@ -174,35 +174,30 @@
         color:#FAFAFACC;
         margin-bottom: 10%;
     }
+    .flex-wrapper {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: space-between;
+    }
 </style>
-<nav id="header" class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand logo" href="">
-            <img src="" style="width: 119px;">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'EduviveData' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">FAQs</a>
-                </li>
-            </ul>
-        </div>
-        {% if user.is_authenticated %}
-        <div class="btn-group" id="sign-up">
-            <button type="button" class="btn btn-profile" onClick="window.location.href='{% url 'dashboard' %}';">{{user}}</button>
-            <button
+<body class="flex-wrapper">
+    <nav id="header" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="">
+                <img src="" style="width: 119px;">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Eduvive</a>
+                    </li>
+                </ul>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="btn-group" id="sign-up">
+                <button type="button" class="btn btn-profile" onClick="window.location.href='{% url 'dashboard' %}';">{{user}}</button>
+                <!-- <button
                 type="button"
                 class="btn btn-arrow dropdown-toggle dropdown-toggle-split"
                 data-bs-toggle="dropdown"
@@ -217,78 +212,78 @@
                 <li>
                     <a class="dropdown-item" href="#">Settings</a>
                 </li>
-            </ul>
-        </div>
-        <a
-            class="btn"
-            id="login-navbtn"
-            type="submit"
-            href="{% url 'logout' %}"
-        >Logout</a>
-        <button
-            class="navbar-toggler  navbar-light"
-            style="background-color:white;"
-            type="button"
-            onclick="openNav()"
-        >
-            <span class="navbar-toggler-icon "></span>
-        </button>
-        {% else %}
-        <a class="nav-link" id="sign-up" href="{% url 'register' %}">Sign up</a>
-        <a
-            class="btn"
-            id="login-navbtn"
-            type="submit"
-            href="{% url 'login' %}"
-        >Login</a>
-        <button
-            class="navbar-toggler  navbar-light"
-            style="background-color:white;"
-            type="button"
-            onclick="openNav()"
-        >
-            <span class="navbar-toggler-icon "></span>
-        </button>
-        {% endif %}
-    </div>
-</nav>
-<div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-        <div class="overlay-top">
-            <a href="{% url 'EduviveData' %}">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Feedback</a>
-            <a href="#">FAQs</a>
-        </div>
-        <div class="overlay-end">
-            {% if user.is_authenticated %}
+            </ul> -->
+            </div>
             <a
                 class="btn"
-                id="login-navbtn2"
+                id="login-navbtn"
                 type="submit"
                 href="{% url 'logout' %}"
             >Logout</a>
+            <button
+                class="navbar-toggler  navbar-light"
+                style="background-color:white;"
+                type="button"
+                onclick="openNav()"
+            >
+                <span class="navbar-toggler-icon "></span>
+            </button>
             {% else %}
-            <a style="text-align: center;margin-left:0%;" href="{% url 'register' %}">Sign up</a>
+            <a class="nav-link" id="sign-up" href="{% url 'register' %}">Sign up</a>
             <a
                 class="btn"
-                id="login-navbtn2"
+                id="login-navbtn"
                 type="submit"
                 href="{% url 'login' %}"
             >Login</a>
+            <button
+                class="navbar-toggler  navbar-light"
+                style="background-color:white;"
+                type="button"
+                onclick="openNav()"
+            >
+                <span class="navbar-toggler-icon "></span>
+            </button>
             {% endif %}
         </div>
-        <div class="row">
-            <p class="copyrights2">
-                Eduvive &copy
-                <script>document.write(new Date().getFullYear())</script>
-            </p>
+    </nav>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <div class="overlay-top">
+                <a href="{% url 'home' %}">Home</a>
+                <!-- <a href="#">About</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Feedback</a>
+                <a href="#">FAQs</a> -->
+            </div>
+            <div class="overlay-end">
+                {% if user.is_authenticated %}
+                <a
+                    class="btn"
+                    id="login-navbtn2"
+                    type="submit"
+                    href="{% url 'logout' %}"
+                >Logout</a>
+                {% else %}
+                <a style="text-align: center;margin-left:0%;" href="{% url 'register' %}">Sign up</a>
+                <a
+                    class="btn"
+                    id="login-navbtn2"
+                    type="submit"
+                    href="{% url 'login' %}"
+                >Login</a>
+                {% endif %}
+            </div>
+            <div class="row">
+                <p class="copyrights2">
+                    Eduvive &copy
+                    <script>document.write(new Date().getFullYear())</script>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<script>
+    <script>
 
   function openNav() {
     document.getElementById("myNav").style.width = "100%";
@@ -297,4 +292,4 @@
   function closeNav() {
     document.getElementById("myNav").style.width = "0%";
   }
-</script>
+    </script>

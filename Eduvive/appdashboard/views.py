@@ -26,6 +26,18 @@ def blogs(request):
     'popular':BlogModel.objects.all().filter(tag='popular')}
     return render(request , 'appdashboard/blogs.html',context)
 
+@login_required(login_url='login') 
+def view_blog(request):
+    context = {}
+
+    try:
+        blog_objs = BlogModel.objects.filter(user=request.user)
+        context['blog_objs'] = blog_objs
+    except Exception as e:
+        print(e)
+
+    print(context)
+    return render(request, 'appdashboard/view_blogs.html', context)
 
 class AddBlogView(View):
     def get(self,request):
@@ -61,6 +73,54 @@ class AddBlogView(View):
         return render(request , 'appdashboard/add_blogs.html',context)
 
 
+
+@login_required(login_url='login') 
+def update_blogs(request, slug):
+    context = {}
+    try:
+
+        blog_obj = BlogModel.objects.get(slug=slug)
+
+        if blog_obj.user != request.user:
+            return redirect('/')
+
+        initial_dict = {'content': blog_obj.content}
+        form = BlogForm(initial=initial_dict)
+        if request.method == 'POST':
+            form = BlogForm(request.POST)
+            print(request.FILES)
+            title = request.POST.get('title')
+            user = request.user
+            
+            if form.is_valid():
+                content = form.cleaned_data['content']
+
+            blog_obj = BlogModel.objects.filter(slug=slug).update(
+                user=user, title=title,
+                content=content
+            )
+
+        context['blog_obj'] = blog_obj
+        context['form'] = form
+    except Exception as e:
+        print(e)
+
+    return render(request, 'appdashboard/update_blogs.html', context)
+
+
+def blog_delete(request, id):
+    try:
+        blog_obj = BlogModel.objects.get(id=id)
+
+        if blog_obj.user == request.user:
+            blog_obj.delete()
+
+    except Exception as e:
+        print(e)
+
+    return redirect('view_blogs')
+
+
 @login_required(login_url='login') 
 def blog_content(request,slug):
     context = {}
@@ -70,3 +130,7 @@ def blog_content(request,slug):
     except Exception as e:
         print(e)
     return render(request,'appdashboard/blog_content.html',context)
+
+
+def home(request):
+    return render(request,'appdashboard/index.html')   
